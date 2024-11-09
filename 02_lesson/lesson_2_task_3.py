@@ -5,5 +5,5 @@ def square(side: float):
     return math.ceil(side ** 2)
 
 
-side = 5
+side = 7
 print(square(side))
