@@ -1,0 +1,51 @@
+1. def capitilize(self, string: str) -> str:
+        """
+        Принимает на вход текст, делает первую букву заглавной и возвращает этот же текст
+        Пример: `capitilize("skypro") -> "Skypro"`
+        """
+        return string.capitalize()
+
+"""
+В классе StringUtils нет функции capitalize. Перепутаны буквы. Происходит ошибочный вызов.
+
+2. def to_list(self, string: str, delimeter=",") -> list[str]:
+        """
+        Принимает на вход текст с разделителем и возвращает список строк. \n
+        Параметры: \n
+            `string` - строка для обработки \n
+            `delimeter` - разделитель строк. По умолчанию запятая (",") \n
+        Пример 1: `to_list("a,b,c,d") -> ["a", "b", "c", "d"]`
+        Пример 2: `to_list("1:2:3", ":") -> ["1", "2", "3"]`
+        """
+        if self.is_empty(string):
+            return []
+
+        return string.split(delimeter)
+
+Ошибка в кейсе '23456', '', ['23456']. Не обрабатывается пустая строка
+
+3. @pytest.mark.parametrize('string, result', [('Star', False), ('', True),
+                                            (' ', True), ('___', False),
+                                            ('   _', False), (None, True)])
+def test_is_empty(string, result):
+    string_utils = StringUtils()
+    res = string_utils.is_empty(string)
+    assert res == result
+
+Ошибка в кейсе (None, True). Пустая строка и значение None должны обрабатываться одинаково
+
+4. @pytest.mark.parametrize('lst, joiner, result', [([1, 2, 3, 4, 5],
+                                                  ',', '1,2,3,4,5'),
+                                                 ([], ' ', ''),
+                                                 (['a', 'b', 'c', 'd'],
+                                                  ' ', 'a b c d'),
+                                                 ([None, '', ''], None, ''),
+                                                 (['Pro', 'Sky'],
+                                                  '-', 'Pro-Sky')
+                                                 ])
+def test_list_to_string(lst, joiner, result):
+    string_utils = StringUtils()
+    res = string_utils.list_to_string(lst, joiner)
+    assert res == result
+
+Ошибка в кейсе ([None, '', ''], None, ''). Нужно добавить в код проверку на разделитель и элемент списка = None.
