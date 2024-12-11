@@ -20,4 +20,4 @@ print(img.get_attribute('src'))
 
 driver.quit()
 
-# div#image-container.col-12.py-2 
+# div#image-container.col-12.py-2
