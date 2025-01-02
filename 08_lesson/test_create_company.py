@@ -2,13 +2,13 @@ from company import Company
 import pytest
 
 base_url = 'https://ru.yougile.com/api-v2'
-login = 'katrinnab@yandex.ru'
-password = 'Artem2005'
+login = ''
+password = ''
 
 
 @pytest.fixture()
 def company():
-    comp = Company('My Project', 'katrinnab@yandex.ru', 'Artem2005')
+    comp = Company('My Project', login, password)
     auth = comp.authorization()
     comp.get_API_Key(auth)
     yield comp
